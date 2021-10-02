@@ -34,11 +34,11 @@ public class Category implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
+	public String getName() {
 		return name;
 	}
-	public void setNome(String nome) {
-		this.name = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
