@@ -36,7 +36,7 @@ import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
 	public CategoryDTO findById(Long id) {
 	//objeto optinal para trabalhar com valor nulo
 	Optional <Category> obj = repository.findById(id);
-	Category entity = obj.orElseThrow(() -> new EntityNotFoundException("Deu ruin nada encontrado"));
+	Category entity = obj.orElseThrow(() -> new EntityNotFoundException("Not Found Exception"));
 	return new CategoryDTO(entity);
 	}
 @Transactional
@@ -56,7 +56,7 @@ public CategoryDTO update(Long id,CategoryDTO dto) {
 		 
 	 }
 	 catch (EntityNotFoundException e) {
-		 throw new ResourceNotFoundException("zica mano, id não encontrado id not found" + id);
+		 throw new ResourceNotFoundException("Id not found" + id);
 
     }
 	

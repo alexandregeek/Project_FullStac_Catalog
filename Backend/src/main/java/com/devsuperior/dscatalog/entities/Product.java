@@ -45,6 +45,9 @@ public class Product implements Serializable{
 		inverseJoinColumns = @JoinColumn(name = "category_id")
 			)
 	Set <Category> categories =new HashSet<>();
+	public Product() {
+		
+	}
 
 	public Product(Long id, String name, String description, Double price, String imgUrl, Instant date) {
 		
@@ -55,6 +58,8 @@ public class Product implements Serializable{
 		this.imgUrl = imgUrl;
 		this.date = date;
 	}
+
+
 
 	public Long getId() {
 		return id;

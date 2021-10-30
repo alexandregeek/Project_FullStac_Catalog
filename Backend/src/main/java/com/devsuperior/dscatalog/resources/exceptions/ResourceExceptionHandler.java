@@ -14,6 +14,8 @@ import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
+	
+	/*
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<StandardError> entityNotFoundException (ResourceNotFoundException e, HttpServletRequest request){
 	StandardError err = new StandardError();
@@ -24,6 +26,21 @@ public class ResourceExceptionHandler {
 	err.setPath(request.getRequestURI());
 	return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
+	
+	*/
+	
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<StandardError> entityNotFoundException (ResourceNotFoundException e, HttpServletRequest request){
+	HttpStatus status = HttpStatus.NOT_FOUND;
+	StandardError err = new StandardError();
+	err.setTimestamp(Instant.now());
+	err.setStatus(status.value());
+	err.setError("Resource not found");
+	err.setMessage(e.getMessage());
+	err.setPath(request.getRequestURI());
+	return ResponseEntity.status(status).body(err);
+	}
+	
 	@ExceptionHandler(DatabaseException.class)
 	public ResponseEntity<StandardError> database(DatabaseException e, HttpServletRequest request){
 	HttpStatus status = HttpStatus.BAD_REQUEST;//otmização do cod
